@@ -1,0 +1,42 @@
+{
+    "jobDefinitionName": "bwa",
+    "type": "container",
+    "tags": {
+        "Project": "Biotech",
+        "Environment": "Dev"
+    },
+    "retryStrategy": {
+        "attempts": 1
+    },
+    "timeout": {
+        "attemptDurationSeconds": 600
+    },
+    "containerProperties": {
+        "mountPoints": [{
+                "sourceVolume": "awscli",
+                "containerPath": "/opt/aws-cli"
+            },
+            {
+                "sourceVolume": "data",
+                "containerPath": "/data"
+            }
+        ],
+        "image": "REPLACE BWA CONTAINER PATH IN ECR",
+        "vcpus": 8,
+        "jobRoleArn": "REPLACE ROLE ARN",
+        "volumes": [{
+                "host": {
+                    "sourcePath": "/opt/aws-cli"
+                },
+                "name": "awscli"
+            },
+            {
+                "host": {
+                    "sourcePath": "/data"
+                },
+                "name": "data"
+            }
+        ],
+        "memory": 8000,
+    }
+}
